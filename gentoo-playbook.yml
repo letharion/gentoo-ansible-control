@@ -1,0 +1,10 @@
+---
+ - hosts: localhost
+   tasks:
+     - name: Install dwl
+       copy:
+         src: dwl-set
+         dest: /etc/portage/sets/dwl
+         owner: portage
+         group: portage
+         mode: u=rw,g=r,o=r
