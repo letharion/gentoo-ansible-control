@@ -1,10 +1,13 @@
 ---
  - hosts: localhost
    tasks:
-     - name: Install dwl
-       copy:
-         src: dwl-set
-         dest: /etc/portage/sets/dwl
+     - name: Install custom sets
+       ansible.builtin.copy:
+         src: "portage-sets/{{ item }}"
+         dest: '/etc/portage/sets/'
          owner: portage
          group: portage
          mode: u=rw,g=r,o=r
+       with_items:
+         - dwl
+         - athens
